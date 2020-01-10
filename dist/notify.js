@@ -520,8 +520,26 @@
 		this.updateClasses();
 		if (this.elem) {
 			this.setElementPosition();
+			this.show(true);
 		} else {
-			this.setGlobalPosition();
+			var $anchor = this.setGlobalPosition();
+			$anchor.css({
+				"width": "",
+				"margin-left": "",
+				"margin-right": ""
+			});
+			this.show(true);
+			console.log('anchor', $anchor);
+			console.log('anchor.width', $anchor.width());
+			var css = {
+				"width": $anchor.css('width'),
+				"margin-left": "auto",
+				"margin-right": "auto",
+				"left": "0",
+				"right": "0"
+			};
+			$anchor.css(css)
+
 		}
 		this.show(true);
 		if (this.options.autoHide) {
